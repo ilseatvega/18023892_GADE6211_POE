@@ -8,12 +8,12 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController catControl;
     //speed of the player
     public float speed = 5f;
-    //jump speed
-    public float jumpSpeed = 10f;
     //tracks the lane the player is in
     private int laneTrack;
-    //vector for jumping
-    public Vector3 jump;
+
+    private float jump = 10f;
+
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         //for jumping - pressing the up arrow key
         if (Input.GetKeyDown("up"))
         {
-            
+            rb.AddForce(new Vector3(0,jump,0), ForceMode.Impulse);
         }
     }
 }
