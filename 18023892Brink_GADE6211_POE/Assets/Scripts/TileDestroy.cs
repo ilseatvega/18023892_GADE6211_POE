@@ -18,7 +18,7 @@ public class TileDestroy : MonoBehaviour
     void Update()
     {
         //if the position of this object is smaller than the position of the player (behind player) and 20 units away
-        if (this.transform.position.z < player.transform.position.z - 20)
+        if (this.transform.position.z < player.transform.position.z - 40)
         {
             //destroy the game object this script is attached to
             Destroy(this.gameObject);

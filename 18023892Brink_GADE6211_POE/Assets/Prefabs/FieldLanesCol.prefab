@@ -4535,9 +4535,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3287323646358711862}
   - component: {fileID: 3451148446934169383}
+  - component: {fileID: -929608211384914761}
   m_Layer: 0
   m_Name: FieldLanesCol
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4575,6 +4576,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d80c8fac0c92e4480e47b1ad6ae99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-929608211384914761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001202046566734885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f06a2811a7df8cd4aa076e1fd0e7f00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 6358660231594451584, guid: 7b153920a5772a542926de45c3934a51, type: 3}
+  - {fileID: 886733586229099822, guid: 6cf558424aff9874984171a31008fdc2, type: 3}
+  - {fileID: 4375476963017878442, guid: 8f73c8cc8968bb04eaf50e5b45592e4f, type: 3}
+  safeZone: 40
 --- !u!1 &2013378860483584092
 GameObject:
   m_ObjectHideFlags: 0

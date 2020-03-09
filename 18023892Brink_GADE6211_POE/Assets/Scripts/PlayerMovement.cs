@@ -11,10 +11,6 @@ public class PlayerMovement : MonoBehaviour
     //tracks the lane the player is in
     private int laneTrack;
 
-    private float jump = 10f;
-
-    public Rigidbody rb;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -56,10 +52,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //for jumping - pressing the up arrow key
-        if (Input.GetKeyDown("up"))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            rb.AddForce(new Vector3(0,jump,0), ForceMode.Impulse);
         }
     }
 }
