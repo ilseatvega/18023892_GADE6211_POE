@@ -4589,8 +4589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles:
-  - {fileID: 6358660231594451584, guid: 7b153920a5772a542926de45c3934a51, type: 3}
-  - {fileID: 886733586229099822, guid: 6cf558424aff9874984171a31008fdc2, type: 3}
+  - {fileID: 4085404269251855021, guid: b2c3fd530d789cb4080d9b7cb64f8c42, type: 3}
+  - {fileID: 3250540569105282635, guid: 58fb345d32ec7944ca095ebe1d49b891, type: 3}
   - {fileID: 4375476963017878442, guid: 8f73c8cc8968bb04eaf50e5b45592e4f, type: 3}
   safeZone: 40
 --- !u!1 &2013378860483584092

@@ -11,6 +11,11 @@ public class PlayerMovement : MonoBehaviour
     //tracks the lane the player is in
     private int laneTrack;
 
+    //public float jumpSpeed = 8.0f;
+    //public float gravity = 20.0f;
+
+    //private Vector3 moveDirection = Vector3.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         catControl = GetComponent<CharacterController>();
         //setting the lane track to 0 as the player spaws in the middle of the 3 lanes (0)
         laneTrack = 0;
+        
     }
 
     // Update is called once per frame
@@ -52,8 +58,26 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-        }
+        //if (catControl.isGrounded)
+        //{
+        //    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        //    moveDirection *= speed;
+
+        //    if (Input.GetKeyDown(KeyCode.UpArrow))
+        //    {
+        //        moveDirection.y = jumpSpeed;
+        //    }
+        //}
+        //// Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+        //// when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+        //// as an acceleration (ms^-2)
+        //moveDirection.y -= gravity * Time.deltaTime;
+
+        //// Move the controller
+        //catControl.Move(moveDirection * Time.deltaTime);
+
+        //if (catControl.isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //}
     }
 }
