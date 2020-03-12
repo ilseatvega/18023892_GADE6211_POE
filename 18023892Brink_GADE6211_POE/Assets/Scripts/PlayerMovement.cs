@@ -4,47 +4,46 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //charactercontroller
-    private CharacterController catControl;
+    //rip char controller, after finding out how difficult it is to use for jumping (and it was making my restart buggy??) :(
+    //private CharacterController catControl;
+
     //speed of the player
-    public float speed = 100f;
+    public float speed = 0f;
     //tracks the lane the player is in
     private int laneTrack;
     
-    public float gravity = 16f;
+    public float jump = 0f;
+    Rigidbody rb;
 
-    private Vector3 moveDirection = Vector3.zero;
-    public float jump = 20f;
-
-    bool isGrounded;
+    bool isGrounded = true;
 
     // Start is called before the first frame update
     void Start()
     {
         //the catcontroller is = to the specific character controller that is attached to it
-        catControl = GetComponent<CharacterController>();
-        //setting the lane track to 0 as the player spaws in the middle of the 3 lanes (0)
+        //catControl = GetComponent<CharacterController>();
+        //setting the lane track to 0 as the player spawns in the middle of the 3 lanes (0)
         laneTrack = 0;
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isGrounded)
-        {
-            //player moves forward automatically
-            catControl.Move((Vector3.forward * speed) * Time.deltaTime);
+        //player moves forward automatically
+        this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-            //if the player presses the left arrow key
-            if (Input.GetKeyDown("left"))
+        //if the player presses the left arrow key
+        if (Input.GetKeyDown("left"))
             {
                 //if the lane the player is in is NOT = to the -1 boundary set by the clamp
                 if (laneTrack != Mathf.Clamp(laneTrack - 1, -1, 1))
                 {
                     //-1 to the lanetrack and make sure they are still within bounds
                     laneTrack = Mathf.Clamp(laneTrack - 1, -1, 1);
-                    //move the player 10 units to the left using the char controller
-                    catControl.Move(Vector3.left * 10);
+                //move the player 10 units to the left
+                this.transform.position += new Vector3(-10, 0, 0);
                 }
             }
 
@@ -56,22 +55,20 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //+1 to the lanetrack and make sure they are still within bounds
                     laneTrack = Mathf.Clamp(laneTrack + 1, -1, 1);
-                    //move the player 10 units to the right using the char controller
-                    catControl.Move(Vector3.right * 10);
+                //move the player 10 units to the right
+                this.transform.position += new Vector3(10, 0, 0);
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
             {
-                moveDirection.y = jump;
+                rb.constraints = ~RigidbodyConstraints.FreezePositionY;
+                rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
                 isGrounded = false;
-            }
-            moveDirection.y -= gravity * Time.deltaTime;
-            catControl.Move(moveDirection * Time.deltaTime);
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionStay(Collision other)
     {
         if (other.gameObject.tag == "Ground")
         {
@@ -88,5 +85,4 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
-
 }

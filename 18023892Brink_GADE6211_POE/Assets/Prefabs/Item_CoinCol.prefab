@@ -50,6 +50,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &3671879276524014336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057595940393052880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009999999, y: 0.009999999, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5435447912760783833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Item_Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 757421703883050351, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
         type: 3}
