@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //rip char controller, after finding out how difficult it is to use for jumping (and it was making my restart buggy??) :(
+    //wont be missed tbh
     //private CharacterController catControl;
 
     //speed of the player
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded = true;
 
+    Animator catAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         laneTrack = 0;
 
         rb = GetComponent<Rigidbody>();
+
+        catAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //if the player presses the right arrow key
-            if (Input.GetKeyDown("right"))
+        if (Input.GetKeyDown("right"))
             {
                 //if the lane the player is in is NOT = to the +1 boundary set by the clamp
                 if (laneTrack != Mathf.Clamp(laneTrack + 1, -1, 1))
@@ -60,12 +65,24 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
+        if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
             {
+                catAnim.SetBool("Jump", true);
                 rb.constraints = ~RigidbodyConstraints.FreezePositionY;
                 rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
                 isGrounded = false;
+            }
+
+        if (Physics.Raycast(transform.position, Vector3.down, 0.3f))
+        {
+            catAnim.SetBool("Jump", false);
         }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 0.3f);
     }
 
     void OnCollisionStay(Collision other)

@@ -128,26 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6411971878582043674, guid: 42e1ad0f6973b174a96962ce822b5418,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.029335
-      objectReference: {fileID: 0}
-    - target: {fileID: -6411971878582043674, guid: 42e1ad0f6973b174a96962ce822b5418,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -0.5099163
-      objectReference: {fileID: 0}
-    - target: {fileID: -6411971878582043674, guid: 42e1ad0f6973b174a96962ce822b5418,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 21.332273
-      objectReference: {fileID: 0}
-    - target: {fileID: -6411971878582043674, guid: 42e1ad0f6973b174a96962ce822b5418,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.26132107
-      objectReference: {fileID: 0}
     - target: {fileID: 2001202046566734885, guid: 42e1ad0f6973b174a96962ce822b5418,
         type: 3}
       propertyPath: m_Name
@@ -284,7 +264,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -458,18 +438,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 500433529, guid: 22cce0bb15bfaf444b5f8862188489b7, type: 3}
-      propertyPath: m_Size.y
-      value: 3.2672267
-      objectReference: {fileID: 0}
-    - target: {fileID: 500433529, guid: 22cce0bb15bfaf444b5f8862188489b7, type: 3}
-      propertyPath: m_Center.y
-      value: 1.641429
-      objectReference: {fileID: 0}
-    - target: {fileID: 500433529, guid: 22cce0bb15bfaf444b5f8862188489b7, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 418052148394777809, guid: 22cce0bb15bfaf444b5f8862188489b7,
         type: 3}
       propertyPath: m_Name
@@ -530,15 +498,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7276694962274100790, guid: 22cce0bb15bfaf444b5f8862188489b7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276694962274100790, guid: 22cce0bb15bfaf444b5f8862188489b7,
+        type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8569458528563154845, guid: 22cce0bb15bfaf444b5f8862188489b7,
         type: 3}
       propertyPath: jump
-      value: 10
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 8569458528563154845, guid: 22cce0bb15bfaf444b5f8862188489b7,
         type: 3}
       propertyPath: speed
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22cce0bb15bfaf444b5f8862188489b7, type: 3}

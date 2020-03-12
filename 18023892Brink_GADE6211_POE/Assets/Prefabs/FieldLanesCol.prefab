@@ -4538,6 +4538,7 @@ GameObject:
   - component: {fileID: -929608211384914761}
   - component: {fileID: -6411971878582043674}
   - component: {fileID: 595496058576616884}
+  - component: {fileID: -43320880562970190}
   m_Layer: 0
   m_Name: FieldLanesCol
   m_TagString: Ground
@@ -4594,7 +4595,7 @@ MonoBehaviour:
   - {fileID: 4085404269251855021, guid: b2c3fd530d789cb4080d9b7cb64f8c42, type: 3}
   - {fileID: 886733586229099822, guid: 6cf558424aff9874984171a31008fdc2, type: 3}
   - {fileID: 4375476963017878442, guid: 8f73c8cc8968bb04eaf50e5b45592e4f, type: 3}
-  safeZone: 40
+  safeZone: 60
 --- !u!65 &-6411971878582043674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4606,8 +4607,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 32.617405, y: 0.8856096, z: 26.670088}
-  m_Center: {x: 0.24813652, y: -0.2921443, z: 0.5859308}
+  m_Size: {x: 32.617405, y: 1.029335, z: 21.332273}
+  m_Center: {x: 0.24813652, y: -0.5099163, z: 0.26132107}
 --- !u!54 &595496058576616884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4624,6 +4625,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-43320880562970190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001202046566734885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21913e6a100422a4aa2ff2be049d6256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 3250540569105282635, guid: 58fb345d32ec7944ca095ebe1d49b891, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  safeZone: 60
 --- !u!1 &2013378860483584092
 GameObject:
   m_ObjectHideFlags: 0
