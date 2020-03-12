@@ -4536,6 +4536,7 @@ GameObject:
   - component: {fileID: 3287323646358711862}
   - component: {fileID: 3451148446934169383}
   - component: {fileID: -929608211384914761}
+  - component: {fileID: -6411971878582043674}
   m_Layer: 0
   m_Name: FieldLanesCol
   m_TagString: Ground
@@ -4593,6 +4594,19 @@ MonoBehaviour:
   - {fileID: 3250540569105282635, guid: 58fb345d32ec7944ca095ebe1d49b891, type: 3}
   - {fileID: 4375476963017878442, guid: 8f73c8cc8968bb04eaf50e5b45592e4f, type: 3}
   safeZone: 40
+--- !u!65 &-6411971878582043674
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001202046566734885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 32.617405, y: 3.7159033, z: 19.934658}
+  m_Center: {x: 0.24813652, y: -1.8647275, z: -0.009813309}
 --- !u!1 &2013378860483584092
 GameObject:
   m_ObjectHideFlags: 0
