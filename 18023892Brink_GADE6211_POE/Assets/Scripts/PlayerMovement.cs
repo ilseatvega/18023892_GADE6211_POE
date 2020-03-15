@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
         {
-            Debug.Log("grounded");
+            //Debug.Log("grounded");
             isGrounded = true;
         }
     }
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
         {
-            Debug.Log("not grounded");
+            //Debug.Log("not grounded");
             isGrounded = false;
         }
     }

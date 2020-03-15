@@ -22,7 +22,7 @@ public class PlayerDeath : MonoBehaviour
         //objects w game tag obstacle
         if (obs.gameObject.tag == "Obstacle")
         {
-            Debug.Log("dead");
+            //Debug.Log("dead");
             //quit for now, but will replace this w load scene once i have it - just for the prototype
             Application.Quit();
             //stop playing in editor

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemClass : MonoBehaviour
+public class ItemSpawn : MonoBehaviour
 {
     //holds the 3 obs prefabs
     public GameObject[] obstacles;

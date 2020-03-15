@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Coin : MonoBehaviour
+public class ItemCoin : ItemClass
 {
     // Start is called before the first frame update
     void Start()
