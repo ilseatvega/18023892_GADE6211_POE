@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TileSpawn : MonoBehaviour
 {
+    //holds prefabs
     public GameObject prefab;
     //so i can track the transform of the player
     private Transform playerTrans;

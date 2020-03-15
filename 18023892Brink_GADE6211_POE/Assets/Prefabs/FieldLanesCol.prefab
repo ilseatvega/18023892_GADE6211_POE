@@ -4593,8 +4593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 4085404269251855021, guid: b2c3fd530d789cb4080d9b7cb64f8c42, type: 3}
-  - {fileID: 886733586229099822, guid: 6cf558424aff9874984171a31008fdc2, type: 3}
   - {fileID: 4375476963017878442, guid: 8f73c8cc8968bb04eaf50e5b45592e4f, type: 3}
+  - {fileID: 886733586229099822, guid: 6cf558424aff9874984171a31008fdc2, type: 3}
   safeZone: 60
 --- !u!65 &-6411971878582043674
 BoxCollider:
@@ -4637,7 +4637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21913e6a100422a4aa2ff2be049d6256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
+  items:
   - {fileID: 3250540569105282635, guid: 58fb345d32ec7944ca095ebe1d49b891, type: 3}
   - {fileID: 0}
   - {fileID: 0}

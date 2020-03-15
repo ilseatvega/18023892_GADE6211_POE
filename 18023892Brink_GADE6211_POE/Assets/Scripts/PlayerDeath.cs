@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //environment manager
+    private GameObject envMan;
+    //bool to determine if player is alive
+    public bool isAlive;
+
     void Start()
     {
-        
+        //player isalive
+        isAlive = true;
+        //using manager tag to find env manager
+        envMan = GameObject.FindGameObjectWithTag("Manager");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //once player collides w obstacles
     void OnCollisionEnter(Collision obs)
     {
@@ -23,11 +23,11 @@ public class PlayerDeath : MonoBehaviour
         if (obs.gameObject.tag == "Obstacle")
         {
             //Debug.Log("dead");
-            //quit for now, but will replace this w load scene once i have it - just for the prototype
-            Application.Quit();
-            //stop playing in editor
-            UnityEditor.EditorApplication.isPlaying = false;
-            //Time.timeScale = 0;
+
+            //player is dead
+            isAlive = false;
+            //calling the death method in scoretrack (script on envman gameobject)
+            envMan.GetComponent<ScoreTrack>().Death();
         }
     }
 }
