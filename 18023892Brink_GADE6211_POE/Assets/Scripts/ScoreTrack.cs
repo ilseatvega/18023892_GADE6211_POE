@@ -14,12 +14,14 @@ public class ScoreTrack : MonoBehaviour
     public GameObject scoretext;
     //int that keeps track of the coins
     private int coins;
-    //scoretext gameobj - the text parented to the canvas that displays the coin cout
+    //scoretext gameobj - the text parented to the canvas that displays the coin count
     public GameObject coinScore;
-
+    //deathcanvas
     public GameObject DeathCanvas;
-
+    //uicanvas
     public GameObject UICanvas;
+    //scoretext gameobj - the text parented to the canvas that displays the fianl score
+    public GameObject endScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -54,12 +56,23 @@ public class ScoreTrack : MonoBehaviour
         coinScore.GetComponent<Text>().text = "Coins: " + coins;
     }
 
+    //finalscore on death canvas
+    public void FinalScore()
+    {   
+        //having the text on the canvas reflect the final score
+        endScoreText.GetComponent<Text>().text = "Score: " + score;
+    }
+
     public void Death()
     {
+        //canvas of ui is false
         UICanvas.SetActive(false);
+        //death canvas is true
         DeathCanvas.SetActive(true);
+        //time stops
         Time.timeScale = 0;
 
+        //when r is pressed
         if (Input.GetKeyDown(KeyCode.R))
         {
             //reload the scene

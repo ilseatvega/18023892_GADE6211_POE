@@ -12,6 +12,7 @@ public class RestartPlay : MonoBehaviour
         //if r key is pressed
         if (Input.GetKeyDown(KeyCode.R))
         {
+            //timescale back to 1
             Time.timeScale = 1;
             //reload the scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

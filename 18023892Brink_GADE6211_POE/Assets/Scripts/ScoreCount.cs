@@ -34,5 +34,12 @@ public class ScoreCount : MonoBehaviour
             //otherwise it will keep adding a score for the same obstacle until it is destroyed
             scored = true;
         }
+
+        //if player is dead
+        if (player.GetComponent<PlayerDeath>().isAlive == false)
+        {
+            //get final score from score track
+            envMan.GetComponent<ScoreTrack>().FinalScore();
+        }
     }
 }
