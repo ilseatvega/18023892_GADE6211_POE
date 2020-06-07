@@ -29,19 +29,32 @@ public class ItemClass : MonoBehaviour
                 switch (locs[i])
                 {
                     case 7:
-                        //item 0 spawns 
-                        spawning = Object.Instantiate(items[0], new Vector3((i * 10) - 10, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-                        spawning.transform.SetParent(this.transform);
+                        //item 0 spawns
+                        if (Random.Range(0, 100) <= 100)
+                        {
+                            spawning = Object.Instantiate(items[0], new Vector3((i * 10) - 10, this.transform.position.y, this.transform.position.z), items[0].transform.rotation);
+                            spawning.transform.SetParent(this.transform);
+                            Debug.Log("case0");
+                        }
                         break;
+
                     case 8:
                         //item 1 spawns
-                        spawning = Object.Instantiate(items[1], new Vector3((i * 10) - 10, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-                        spawning.transform.SetParent(this.transform);
+                        if (Random.Range(0, 100) <= 40)
+                        {
+                            spawning = Object.Instantiate(items[1], new Vector3((i * 10) - 10, this.transform.position.y + 5f, this.transform.position.z), items[1].transform.rotation);
+                            spawning.transform.SetParent(this.transform);
+                            Debug.Log("case1");
+                        }
                         break;
                     case 9:
                         //item 3 spawns
-                        spawning = Object.Instantiate(items[2], new Vector3((i * 10) - 10, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-                        spawning.transform.SetParent(this.transform);
+                        if (Random.Range(0, 100) <= 50)
+                        {
+                            spawning = Object.Instantiate(items[2], new Vector3((i * 10) - 10, this.transform.position.y, this.transform.position.z), items[2].transform.rotation);
+                            spawning.transform.SetParent(this.transform);
+                            Debug.Log("case2");
+                        }
                         break;
                     default:
                         break;

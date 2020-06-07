@@ -4639,8 +4639,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 3250540569105282635, guid: 58fb345d32ec7944ca095ebe1d49b891, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6367729803093375923, guid: b2796aece16aba84c930713de143c405, type: 3}
+  - {fileID: 6584739370126209324, guid: 3d4097f8d27ff9c4b9cfc476e390be3d, type: 3}
   safeZone: 60
 --- !u!1 &2013378860483584092
 GameObject:
