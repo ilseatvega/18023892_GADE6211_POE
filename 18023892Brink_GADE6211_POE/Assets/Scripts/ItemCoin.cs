@@ -20,7 +20,7 @@ public class ItemCoin : MonoBehaviour
         if (coin.gameObject.tag == "Player")
         {
             //calling on the addcoin method from the scoretrack script
-            envMan.GetComponent<ScoreTrack>().AddCoins();
+            envMan.GetComponent<GameManager>().AddCoins();
             //destroy the coin
             Destroy(this.gameObject);
         }

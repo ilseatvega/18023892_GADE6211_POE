@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: b724032c3f711ef4bb4030a7156eb1d8
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 429772914528691282
+    second: Blueberry.002|Blueberry.001Action
+  - first:
+      74: 660588612051310093
+    second: Blueberry.002|Item_CoinAction
+  - first:
+      74: -7884644667270360530
+    second: Blueberry.002|Item_CoinAction.001
   externalObjects: {}
   materials:
     materialImportMode: 1

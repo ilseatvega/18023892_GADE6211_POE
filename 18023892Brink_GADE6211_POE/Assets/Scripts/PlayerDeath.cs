@@ -16,6 +16,7 @@ public class PlayerDeath : MonoBehaviour
         //using manager tag to find env manager
         envMan = GameObject.FindGameObjectWithTag("Manager");
     }
+    
     //once player collides w obstacles
     void OnCollisionEnter(Collision obs)
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 998768613429306089}
   - component: {fileID: -7612020949528883770}
   - component: {fileID: 2657196507182479852}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Item_CoinCol
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -101,11 +101,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4296403749127312240}
     m_Modifications:
+    - target: {fileID: -8310370368444513193, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -5400926386829855489, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 77532d92fdd5bdd4b998ad8b79a3833b, type: 2}
+      objectReference: {fileID: 2100000, guid: 8520d21f99201dc49a1e24b6d98918ff, type: 2}
     - target: {fileID: -4216859302048453862, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -165,7 +170,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fa105e035fa3e394d8cad367f23d07c2, type: 2}
+      objectReference: {fileID: 2100000, guid: f4386d65c644fd148874bef7d5db7ca6, type: 2}
     - target: {fileID: -927199367670048503, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
         type: 3}
       propertyPath: m_Name
@@ -176,11 +181,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 757421703883050351, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 77532d92fdd5bdd4b998ad8b79a3833b, type: 2}
+      objectReference: {fileID: 2100000, guid: 8520d21f99201dc49a1e24b6d98918ff, type: 2}
+    - target: {fileID: 8933162754106193694, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a7ad6b2fdf1584b969556c1cb5c4d9, type: 3}
 --- !u!1 &4057595940393052880 stripped
