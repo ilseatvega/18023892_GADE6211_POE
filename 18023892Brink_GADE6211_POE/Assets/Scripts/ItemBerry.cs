@@ -8,6 +8,12 @@ public class ItemBerry : MonoBehaviour
     //environment manager
     private GameObject envMan;
 
+    private void Start()
+    {
+        //using manager tag to find env manager
+        envMan = GameObject.FindGameObjectWithTag("Manager");
+    }
+
     //coroutine for invincibility
     IEnumerator TimerCoroutine(GameObject Player)
     {
@@ -17,9 +23,8 @@ public class ItemBerry : MonoBehaviour
         //ground has its own layer, tweaked the collisions in physics settings
         Player.layer = LayerMask.NameToLayer("Invincible");
 
-        //wait 5 seconds
-        yield return new WaitForSecondsRealtime(5);
-
+        //wait 10 seconds
+        yield return new WaitForSecondsRealtime(10);
         
         //change player layer back to default - can now collide with other default objects and die
         Player.layer = LayerMask.NameToLayer("Default");
@@ -34,6 +39,8 @@ public class ItemBerry : MonoBehaviour
         //if berry collides w player
         if (berry.gameObject.tag == "Player")
         {
+            //the mutiply active coroutine from the game manager to activate/deactivate the visual indicator
+            StartCoroutine(envMan.GetComponent<GameManager>().BerryActive());
             //start the coroutine
             StartCoroutine(TimerCoroutine(berry.transform.gameObject));
             //collider of the berry is disabled

@@ -29,6 +29,8 @@ public class ItemMultiplier : MonoBehaviour
         //if collar collides w player
         if (multiply.gameObject.tag == "Player" && !called)
         {
+            //the mutiply active coroutine from the game manager to activate/deactivate the visual indicator
+            StartCoroutine(envMan.GetComponent<GameManager>().MultActive());
             //set called to true so that it doesnt keep calling and setting multiplier to 2
             called = true;
             //set multiplier to 2
