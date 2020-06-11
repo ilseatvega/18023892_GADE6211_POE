@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 4185276336534785853}
   - component: {fileID: 8775311049728541195}
   - component: {fileID: -7268457994300385810}
-  - component: {fileID: 3561134702858462306}
+  - component: {fileID: -670890058894672444}
   m_Layer: 0
   m_Name: Obs_HoleFieldCol
   m_TagString: Obstacle
@@ -459,7 +459,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &3561134702858462306
+--- !u!114 &-670890058894672444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 886733586229099822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a5549e912b3674aa87ec80efe35bf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1981b6a76a1a9794eb7b4f71684e0cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &984485017356670399

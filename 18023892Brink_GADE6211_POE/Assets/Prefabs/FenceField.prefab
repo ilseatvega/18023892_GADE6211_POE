@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7000311505620499963}
   - component: {fileID: 427085033106066057}
   - component: {fileID: 6932087641412159885}
-  - component: {fileID: -6072510818426810906}
+  - component: {fileID: -1060211167900029758}
   m_Layer: 0
   m_Name: FenceField
   m_TagString: Obstacle
@@ -63,7 +63,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-6072510818426810906
+--- !u!114 &-1060211167900029758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4085404269251855021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a5549e912b3674aa87ec80efe35bf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1981b6a76a1a9794eb7b4f71684e0cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5656883670318362882

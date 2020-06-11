@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     //rip char controller, after finding out how difficult it is to use for jumping (and it was making my restart buggy??) :(
     //wont be missed tbh
     //private CharacterController catControl;
-
+    
     //speed of the player
     public float speed = 0f;
     //tracks the lane the player is in
@@ -72,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
                     this.transform.position += new Vector3(10, 0, 0);
                 }
             }
-            //if player is on theh ground and they press up arrow key to jump
+            //if player is on the ground and they press up arrow key to jump
             if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
             {
                 //switch to jump animation

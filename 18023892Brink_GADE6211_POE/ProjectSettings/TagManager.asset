@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Item
   - Manager
+  - Berry
   layers:
   - Default
   - TransparentFX

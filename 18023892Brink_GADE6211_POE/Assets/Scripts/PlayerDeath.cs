@@ -23,12 +23,10 @@ public class PlayerDeath : MonoBehaviour
         //objects w game tag obstacle
         if (obs.gameObject.tag == "Obstacle")
         {
-            //Debug.Log("dead");
-
             //player is dead
             isAlive = false;
             //calling the death method in scoretrack (script on envman gameobject)
-            envMan.GetComponent<ScoreTrack>().Death();
+            envMan.GetComponent<GameManager>().Death();
         }
     }
 }

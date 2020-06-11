@@ -8,19 +8,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //player
-    private GameObject player;
-    //environment manager
-    private GameObject envMan;
-    //bool to determine whether or not the object has been scored
-    private bool scored;
-
     //int that keeps track of the score
     private int score;
+    //multiplier to be used on the multiplier item 
+    private int multiplier =1;
     //scoretext gameobj - the text parented to the canvas that displays the score
     public GameObject scoretext;
     //int that keeps track of the coins
-    private int coins;
+    public int coins;
     //scoretext gameobj - the text parented to the canvas that displays the coin count
     public GameObject coinScore;
     //deathcanvas
@@ -29,21 +24,16 @@ public class GameManager : MonoBehaviour
     public GameObject UICanvas;
     //scoretext gameobj - the text parented to the canvas that displays the fianl score
     public GameObject endScoreText;
+    //
+    public int Multiplier { get { return multiplier; } set { multiplier = value; } }
 
     // Start is called before the first frame update
     void Start()
     {
-        //player is equal to the player object(using tag to find it)
-        player = GameObject.FindGameObjectWithTag("Player");
-        //using manager tag to find env manager
-        envMan = GameObject.FindGameObjectWithTag("Manager");
-        //setting scored to false - player has not scored
-        scored = false;
-
         //getting the text component and making it 0
-        scoretext.GetComponent<Text>().text = "-1";
+        scoretext.GetComponent<Text>().text = "0";
         //setting score to 0
-        score = -1;
+        score = 0;
 
         //getting the text component and making it 0
         coinScore.GetComponent<Text>().text = "Coins: 0";
@@ -62,23 +52,6 @@ public class GameManager : MonoBehaviour
             //reload the scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
-        //if this obstacle's z pos is smaller than or = to than the player's z pos ( behind or next to them) and they havent scored yet
-        if (this.transform.position.z <= player.transform.position.z && scored == false)
-        {
-            //call addscore method and track score
-            AddScore();
-            //they have now scored so set this to true
-            //otherwise it will keep adding a score for the same obstacle until it is destroyed
-            scored = true;
-        }
-
-        //if player is dead
-        if (player.GetComponent<PlayerDeath>().isAlive == false)
-        {
-            //get final score
-            FinalScore();
-        }
     }
 
     //method that adds up the score
@@ -88,18 +61,23 @@ public class GameManager : MonoBehaviour
         score++;
         //having the text on the canvas reflect the score count
         scoretext.GetComponent<Text>().text = score.ToString("F0");
-
-        Debug.Log(score);
     }
     //method that adds the coins
     public void AddCoins()
     {
         //coins increment
-        coins++;
+        coins += 1 * multiplier;
         //having the text on the canvas reflect the coin count
         coinScore.GetComponent<Text>().text = "Coins: " + coins;
     }
-
+    //coroutine to set the coin multiplier back to 1
+    public IEnumerator ResetCoin()
+    {
+        //wait 10 seconds
+        yield return new WaitForSecondsRealtime(10);
+        //set multiplier to 1
+        multiplier = 1;
+    }
     //finalscore on death canvas
     public void FinalScore()
     {
@@ -123,4 +101,5 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
 }

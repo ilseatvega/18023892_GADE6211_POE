@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1641329544857749239}
   - component: {fileID: -2386814971016463668}
   - component: {fileID: 8999202791033885818}
-  - component: {fileID: 7257678439762723963}
+  - component: {fileID: -623627343962492187}
   m_Layer: 0
   m_Name: FieldRock
   m_TagString: Obstacle
@@ -64,7 +64,7 @@ CapsuleCollider:
   m_Height: 6.004232
   m_Direction: 0
   m_Center: {x: 0.04761815, y: 0.58935094, z: -0.2919451}
---- !u!114 &7257678439762723963
+--- !u!114 &-623627343962492187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4375476963017878442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a5549e912b3674aa87ec80efe35bf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1981b6a76a1a9794eb7b4f71684e0cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5455811348261982691

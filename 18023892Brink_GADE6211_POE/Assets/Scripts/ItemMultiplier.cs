@@ -4,37 +4,55 @@ using UnityEngine;
 
 public class ItemMultiplier : MonoBehaviour
 {
-    //coroutine for invincibility
-    IEnumerator TimerCoroutine(GameObject Player)
+    //called bool that determines if the multiplier has been called
+    private bool called = false;
+    //environment manager
+    private GameObject envMan;
+
+    private void Start()
     {
-        //disable death script
-        Player.GetComponent<PlayerDeath>().enabled = false;
-        //change player layer to invincible - can collide with default objects without dying
-        //ground has its own layer, tweaked the collisions in physics settings
-        Player.layer = LayerMask.NameToLayer("Invincible");
+        //using manager tag to find env manager
+        envMan = GameObject.FindGameObjectWithTag("Manager");
+    }
+    //coroutine for destroying object
+    IEnumerator TimerCoroutine(GameObject envManager)
+    {
+        //wait 8 seconds
+        yield return new WaitForSecondsRealtime(10);
 
-        //wait 5 seconds
-        yield return new WaitForSecondsRealtime(5);
-
-        //change player layer back to default - can now collide with other default objects and die
-        Player.layer = LayerMask.NameToLayer("Default");
-        //enable death script
-        Player.GetComponent<PlayerDeath>().enabled = true;
-        //destroy the berry
+        //destroy the collar
         Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter(Collision multiply)
     {
-        //if berry collides w player
-        if (multiply.gameObject.tag == "Player")
+        //if collar collides w player
+        if (multiply.gameObject.tag == "Player" && !called)
         {
-            //start the coroutine
+            //set called to true so that it doesnt keep calling and setting multiplier to 2
+            called = true;
+            //set multiplier to 2
+            envMan.GetComponent<GameManager>().Multiplier = 2;
+            //call resertcoin from game manager to multiply coins
+            StartCoroutine(envMan.GetComponent<GameManager>().ResetCoin());
+            //start the coroutine that destroys the object
             StartCoroutine(TimerCoroutine(multiply.transform.gameObject));
             //collider of the multiplier is disabled
-            GetComponent<CapsuleCollider>().enabled = false;
-            //turn mesh renderer off (object disappears but not destroyed)
-            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+            //using a foreach so that every child in the collar has their mesh turned off
+            foreach (Transform child in transform)
+            {
+                try
+                {
+                    //turn off collar mesh renderer
+                    child.GetComponent<MeshRenderer>().enabled = false;
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+            }
         }
     }
 }

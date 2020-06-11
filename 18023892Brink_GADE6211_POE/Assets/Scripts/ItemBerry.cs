@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemBerry : MonoBehaviour
 {
+    //environment manager
+    private GameObject envMan;
+
     //coroutine for invincibility
     IEnumerator TimerCoroutine(GameObject Player)
     {
@@ -16,6 +20,7 @@ public class ItemBerry : MonoBehaviour
         //wait 5 seconds
         yield return new WaitForSecondsRealtime(5);
 
+        
         //change player layer back to default - can now collide with other default objects and die
         Player.layer = LayerMask.NameToLayer("Default");
         //enable death script

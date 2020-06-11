@@ -3,80 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 //so that i can use Text
 using UnityEngine.UI;
-//added to control scene
-using UnityEngine.SceneManagement;
 
 public class ScoreTrack : MonoBehaviour
 {
-    //int that keeps track of the score
-    private int score;
-    //scoretext gameobj - the text parented to the canvas that displays the score
-    public GameObject scoretext;
-    //int that keeps track of the coins
-    private int coins;
-    //scoretext gameobj - the text parented to the canvas that displays the coin count
-    public GameObject coinScore;
-    //deathcanvas
-    public GameObject DeathCanvas;
-    //uicanvas
-    public GameObject UICanvas;
-    //scoretext gameobj - the text parented to the canvas that displays the fianl score
-    public GameObject endScoreText;
+    //player
+    private GameObject player;
+    //environment manager
+    private GameObject envMan;
+    //bool to determine whether or not the object has been scored
+    private bool scored;
 
     // Start is called before the first frame update
     void Start()
     {
-        //getting the text component and making it 0
-        scoretext.GetComponent<Text>().text = "0";
-        //setting score to 0
-        score = 0;
-
-        //getting the text component and making it 0
-        coinScore.GetComponent<Text>().text = "Coins: 0";
-        //coins is 0
-        coins = 0;
+        //player is equal to the player object(using tag to find it)
+        player = GameObject.FindGameObjectWithTag("Player");
+        //using manager tag to find env manager
+        envMan = GameObject.FindGameObjectWithTag("Manager");
+        //setting scored to false - player has not scored
+        scored = false;
     }
 
-    //method that adds up the score
-    public void AddScore()
+    // Update is called once per frame
+    void Update()
     {
-        //score increments
-        score++;
-        //having the text on the canvas reflect the score count
-        scoretext.GetComponent<Text>().text = score.ToString("F0");
-
-        //Debug.Log(score);
-    }
-    //method that adds the coins
-    public void AddCoins()
-    {
-        //coins increment
-        coins++;
-        //having the text on the canvas reflect the coin count
-        coinScore.GetComponent<Text>().text = "Coins: " + coins;
-    }
-
-    //finalscore on death canvas
-    public void FinalScore()
-    {   
-        //having the text on the canvas reflect the final score
-        endScoreText.GetComponent<Text>().text = "Score: " + score;
-    }
-
-    public void Death()
-    {
-        //canvas of ui is false
-        UICanvas.SetActive(false);
-        //death canvas is true
-        DeathCanvas.SetActive(true);
-        //time stops
-        Time.timeScale = 0;
-
-        //when r is pressed
-        if (Input.GetKeyDown(KeyCode.R))
+        //if this obstacle's z pos is smaller than or = to than the player's z pos ( behind or next to them) and they havent scored yet
+        if (this.transform.position.z <= player.transform.position.z && scored == false)
         {
-            //reload the scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //call addscore method and track score
+            envMan.GetComponent<GameManager>().AddScore();
+            //they have now scored so set this to true
+            //otherwise it will keep adding a score for the same obstacle until it is destroyed
+            scored = true;
+        }
+        //if player is dead
+        if (player.GetComponent<PlayerDeath>().isAlive == false)
+        {
+            //get final score
+            envMan.GetComponent<GameManager>().FinalScore();
         }
     }
 }
