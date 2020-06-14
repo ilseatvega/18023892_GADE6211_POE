@@ -465,7 +465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e621d5f28862ace40a6bb531c0ce1a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryActive: {fileID: 0}
   speed: 40
   jump: 200
 --- !u!65 &500433529

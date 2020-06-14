@@ -8,12 +8,20 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //buttons
+    public Button play;
+    public Button restartInGame;
+    public Button pause;
+    public Button restart;
+    public Button exit;
+
     //for the multiplier visual indicator that pops up when the collar is picked up
     public GameObject multiplierUI;
+    public GameObject multiplier2;
     //for the invincible visual indicator that pops up when the berry is picked up
     public GameObject berryUI;
     //int that keeps track of the score
-    private int score;
+    public int score;
     //multiplier to be used on the multiplier item 
     private int multiplier =1;
     //scoretext gameobj - the text parented to the canvas that displays the score
@@ -34,6 +42,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //buttons
+        play.onClick.AddListener(Play);
+        pause.onClick.AddListener(Pause);
+        restartInGame.onClick.AddListener(Restart);
+        restart.onClick.AddListener(Restart);
+        exit.onClick.AddListener(Exit);
+
         //getting the text component and making it 0
         scoretext.GetComponent<Text>().text = "0";
         //setting score to 0
@@ -45,17 +60,50 @@ public class GameManager : MonoBehaviour
         coins = 0;
     }
 
+    //play method for button
+    void Play()
+    {
+        //unfreeze time
+        Time.timeScale = 1;
+    }
+    //pause method for button
+    void Pause()
+    {
+        //freeze time
+        Time.timeScale = 0;
+    }
+    //exit method for button
+    void Exit()
+    {
+        //quit application (******will change to QUIT TO MENU later******)
+        Application.Quit();
+    }
+    //restart method for button
+    void Restart()
+    {
+        //timescale back to 1
+        Time.timeScale = 1;
+        //reload the scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //if r key is pressed (restart)
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            //timescale back to 1
-            Time.timeScale = 1;
-            //reload the scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+            //if r key is pressed (restart)
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                //timescale back to 1
+                Time.timeScale = 1;
+                //reload the scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            //if press escape
+            if (Input.GetKeyDown("escape"))
+            {
+            //quit application (******will change to QUIT TO MENU later******)
+            Application.Quit();
+            }
     }
 
     //method that adds up the score
@@ -99,12 +147,14 @@ public class GameManager : MonoBehaviour
     {
         //set image active
         multiplierUI.SetActive(true);
+        multiplier2.SetActive(true);
 
         //wait 10 seconds
         yield return new WaitForSecondsRealtime(10);
 
         //set ui to not active
         multiplierUI.SetActive(false);
+        multiplier2.SetActive(false);
     }
     //finalscore on death canvas
     public void FinalScore()

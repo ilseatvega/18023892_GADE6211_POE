@@ -14,6 +14,15 @@ public class ObsSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //refer to bossstatus
+        BossStatus reference = GameObject.FindGameObjectWithTag("Manager").GetComponent<BossStatus>();
+        //if status of boss is true (active)
+        if (reference.Status == true)
+        {
+            //dont do anything
+            return;
+        }
+
         //new gameobj spawning - an instantiation of one of the objects or pickups
         GameObject spawning;
 
