@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemMultiplier : MonoBehaviour
 {
+    //sound
+    private AudioSource multiplyAudio;
     //called bool that determines if the multiplier has been called
     private bool called = false;
     //environment manager
@@ -11,6 +13,8 @@ public class ItemMultiplier : MonoBehaviour
 
     private void Start()
     {
+        //get audio source component
+        multiplyAudio = GetComponent<AudioSource>();
         //using manager tag to find env manager
         envMan = GameObject.FindGameObjectWithTag("Manager");
     }
@@ -29,6 +33,8 @@ public class ItemMultiplier : MonoBehaviour
         //if collar collides w player
         if (multiply.gameObject.tag == "Player" && !called)
         {
+            //sound
+            multiplyAudio.Play();
             //the mutiply active coroutine from the game manager to activate/deactivate the visual indicator
             StartCoroutine(envMan.GetComponent<GameManager>().MultActive());
             //set called to true so that it doesnt keep calling and setting multiplier to 2

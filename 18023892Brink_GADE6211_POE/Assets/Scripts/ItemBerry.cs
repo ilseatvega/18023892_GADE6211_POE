@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class ItemBerry : MonoBehaviour
 {
+    //sound
+    private AudioSource berryAudio;
     //environment manager
     private GameObject envMan;
 
     private void Start()
     {
+        //get audio source component
+        berryAudio = GetComponent<AudioSource>();
         //using manager tag to find env manager
         envMan = GameObject.FindGameObjectWithTag("Manager");
     }
@@ -39,6 +43,8 @@ public class ItemBerry : MonoBehaviour
         //if berry collides w player
         if (berry.gameObject.tag == "Player")
         {
+            //sound
+            berryAudio.Play();
             //the mutiply active coroutine from the game manager to activate/deactivate the visual indicator
             StartCoroutine(envMan.GetComponent<GameManager>().BerryActive());
             //start the coroutine

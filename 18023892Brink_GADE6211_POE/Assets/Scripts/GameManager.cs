@@ -8,12 +8,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //array to hold all audio sources
+    private AudioSource[] allAudioSources;
+
     //buttons
     public Button play;
     public Button restartInGame;
     public Button pause;
     public Button restart;
     public Button exit;
+    public Button muteAll;
 
     //for the multiplier visual indicator that pops up when the collar is picked up
     public GameObject multiplierUI;
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
         restartInGame.onClick.AddListener(Restart);
         restart.onClick.AddListener(Restart);
         exit.onClick.AddListener(Exit);
+        muteAll.onClick.AddListener(StopAudio);
 
         //getting the text component and making it 0
         scoretext.GetComponent<Text>().text = "0";
@@ -104,6 +109,18 @@ public class GameManager : MonoBehaviour
             //quit application (******will change to QUIT TO MENU later******)
             Application.Quit();
             }
+    }
+    //method to stop all audio (death)
+    void StopAudio()
+    {
+        //find all audio objects
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        //foreach loop to loop through and stop each one
+        foreach (AudioSource audio in allAudioSources)
+        {
+            //stop audio
+            audio.Stop();
+        }
     }
 
     //method that adds up the score
@@ -171,6 +188,8 @@ public class GameManager : MonoBehaviour
         DeathCanvas.SetActive(true);
         //time stops
         Time.timeScale = 0;
+        //stop audio
+        StopAudio();
 
         //when r is pressed
         if (Input.GetKeyDown(KeyCode.R))

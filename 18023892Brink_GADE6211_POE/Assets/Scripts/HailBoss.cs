@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class HailBoss : MonoBehaviour
 {
+    //sound
+    public AudioSource bgMusic;
+    //sound
+    private AudioSource ominous;
     //light of the sky - will darken once boss is spawned
     public Light skyLight;
     //normal sky material when boss in inactive
@@ -19,6 +23,8 @@ public class HailBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //sound
+        ominous = GetComponent<AudioSource>();
         //using manager tag to find env manager
         envMan = GameObject.FindGameObjectWithTag("Manager");
     }
@@ -31,12 +37,11 @@ public class HailBoss : MonoBehaviour
             //if not yet triggered
             if (!triggered)
             {
-                if (envMan.GetComponent<GameManager>().score >= 10 && envMan.GetComponent<GameManager>().score <= 59)
-                {
-                    envMan.GetComponent<GameManager>().score = 10;
-                }
                 //set triggered to true
                 triggered = true;
+                //play sound
+                ominous.Play();
+                bgMusic.volume = 0.05f;
                 //start the coroutine that will stop boss after certain amount of seconds
                 StartCoroutine(stopBoss());
                 //refer to the bossstatus script
@@ -56,6 +61,9 @@ public class HailBoss : MonoBehaviour
             yield return new WaitForSeconds(30f);
             //set triggered to false
             triggered = false;
+            //stop sound
+            ominous.Stop();
+            bgMusic.volume = 0.1f;
             //refer to the bossstatus script
             BossStatus reference = GameObject.FindGameObjectWithTag("Manager").GetComponent<BossStatus>();
             //set status to false

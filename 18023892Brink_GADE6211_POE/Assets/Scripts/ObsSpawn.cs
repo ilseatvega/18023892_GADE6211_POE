@@ -29,6 +29,8 @@ public class ObsSpawn : MonoBehaviour
         if (this.transform.position.z > safeZone)
         {
             //for loop to loop through the possible locations and objects
+            //not sure why some objects still spawn in one another even though pickups and obstacles use the same switch?
+            //seems to only be pickups spawning in obstacles (not obstacle spawning on obsctacle for eg)
             for (int i = 0; i < locs.Length; i++)
             {
                 //random range - the bigger the no. the less likely something will spawn
