@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public Button restart;
     public Button exit;
     public Button muteAll;
+    public Button pauseResume;
+    public Button pauseRestart;
+    public Button pauseExit;
 
     //for the multiplier visual indicator that pops up when the collar is picked up
     public GameObject multiplierUI;
@@ -38,6 +41,8 @@ public class GameManager : MonoBehaviour
     public GameObject DeathCanvas;
     //uicanvas
     public GameObject UICanvas;
+    //pause panel
+    public GameObject PauseCanvas;
     //scoretext gameobj - the text parented to the canvas that displays the fianl score
     public GameObject endScoreText;
     //multiplier get set that can either get multiplers value or set it to a value
@@ -53,6 +58,10 @@ public class GameManager : MonoBehaviour
         restart.onClick.AddListener(Restart);
         exit.onClick.AddListener(Exit);
         muteAll.onClick.AddListener(StopAudio);
+        //pause
+        pauseResume.onClick.AddListener(PauseResume);
+        pauseRestart.onClick.AddListener(PauseRestart);
+        pauseExit.onClick.AddListener(PauseExit);
 
         //getting the text component and making it 0
         scoretext.GetComponent<Text>().text = "0";
@@ -71,21 +80,45 @@ public class GameManager : MonoBehaviour
         //unfreeze time
         Time.timeScale = 1;
     }
+    //pause resume button method
+    void PauseResume()
+    {
+        PauseCanvas.SetActive(false);
+        //unfreeze time
+        Time.timeScale = 1;
+    }
     //pause method for button
     void Pause()
     {
+        PauseCanvas.SetActive(true);
         //freeze time
         Time.timeScale = 0;
     }
     //exit method for button
     void Exit()
     {
-        //quit application (******will change to QUIT TO MENU later******)
-        Application.Quit();
+        //quit to main menu
+        SceneManager.LoadScene(sceneName: "Start");
+    }
+    //pause exit button method
+    void PauseExit()
+    {
+        PauseCanvas.SetActive(false);
+        //quit to main menu
+        SceneManager.LoadScene(sceneName: "Start");
     }
     //restart method for button
     void Restart()
     {
+        //timescale back to 1
+        Time.timeScale = 1;
+        //reload the scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    //pause restart button method
+    void PauseRestart()
+    {
+        PauseCanvas.SetActive(false);
         //timescale back to 1
         Time.timeScale = 1;
         //reload the scene

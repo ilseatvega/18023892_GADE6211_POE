@@ -31,8 +31,8 @@ public class HailBoss : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if score is 10,11 or 12 (player can pass up to 3 objects at a time which can make score skip 10 and jump to 12)
-        if (envMan.GetComponent<GameManager>().score == 10 || envMan.GetComponent<GameManager>().score == 11 || envMan.GetComponent<GameManager>().score == 12)
+        //if score is 50,51 or 52 (player can pass up to 3 objects at a time which can make score skip 10 and jump to 12)
+        if (envMan.GetComponent<GameManager>().score == 50 || envMan.GetComponent<GameManager>().score == 51 || envMan.GetComponent<GameManager>().score == 52)
         {
             //if not yet triggered
             if (!triggered)
