@@ -5,9 +5,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 //so that i can use Text
 using UnityEngine.UI;
+//for events
+using UnityEngine.Events;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    //fieldboss unity event
+    public UnityEvent fieldBossEvent;
+
+    public bool isEnabled = false;
+
     //array to hold all audio sources
     private AudioSource[] allAudioSources;
 
@@ -22,6 +30,8 @@ public class GameManager : MonoBehaviour
     public Button pauseRestart;
     public Button pauseExit;
 
+    
+    private GameObject player;
     //for the multiplier visual indicator that pops up when the collar is picked up
     public GameObject multiplierUI;
     public GameObject multiplier2;
@@ -51,6 +61,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //player is equal to the player object(using tag to find it)
+        player = GameObject.FindGameObjectWithTag("Player");
+
         //buttons
         play.onClick.AddListener(Play);
         pause.onClick.AddListener(Pause);
@@ -104,6 +117,9 @@ public class GameManager : MonoBehaviour
     void PauseExit()
     {
         PauseCanvas.SetActive(false);
+        StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+        outputStream.WriteLine("0");
+        outputStream.Close();
         //quit to main menu
         SceneManager.LoadScene(sceneName: "Start");
     }
@@ -112,6 +128,9 @@ public class GameManager : MonoBehaviour
     {
         //timescale back to 1
         Time.timeScale = 1;
+        StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+        outputStream.WriteLine("0");
+        outputStream.Close();
         //reload the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -121,6 +140,9 @@ public class GameManager : MonoBehaviour
         PauseCanvas.SetActive(false);
         //timescale back to 1
         Time.timeScale = 1;
+        StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+        outputStream.WriteLine("0");
+        outputStream.Close();
         //reload the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -133,15 +155,28 @@ public class GameManager : MonoBehaviour
             {
                 //timescale back to 1
                 Time.timeScale = 1;
-                //reload the scene
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+            outputStream.WriteLine("0");
+            outputStream.Close();
+            //reload the scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             //if press escape
             if (Input.GetKeyDown("escape"))
             {
-            //quit application (******will change to QUIT TO MENU later******)
-            Application.Quit();
+            //quit to menu
+            SceneManager.LoadScene(sceneName: "Start");
             }
+    }
+
+    private void FixedUpdate()
+    {
+        //if the score is 50, 51 or 52
+        if (score == 50 ||score == 51 ||score == 52)
+        {
+            //invoke the boss event
+            fieldBossEvent.Invoke();
+        }
     }
     //method to stop all audio (death)
     void StopAudio()
@@ -223,6 +258,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         //stop audio
         StopAudio();
+        //
+        StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+        outputStream.WriteLine("0");
+        outputStream.Close();
 
         //when r is pressed
         if (Input.GetKeyDown(KeyCode.R))

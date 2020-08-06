@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8625325132278861841}
   - component: {fileID: 2634543011223104744}
   m_Layer: 0
-  m_Name: Obs_RockField
-  m_TagString: Untagged
+  m_Name: Obs_RockFieldCol
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

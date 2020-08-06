@@ -1,10 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//so that i can use Text
+using UnityEngine.UI;
+//
+using UnityEngine.Events;
+
+using System.IO;
+//added to control scene
+using UnityEngine.SceneManagement;
 
 
 public class HailBoss : MonoBehaviour
 {
+    //scoretext gameobj - the text parented to the canvas that displays the score
+    public GameObject LVLtext;
+    public int LVLscore;
+
+    public UnityEvent onDisable;
+
+    //bool to track the boss enabled event
+    public bool isEnabled = false;
+
     //sound
     public AudioSource bgMusic;
     //sound
@@ -23,6 +40,9 @@ public class HailBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //getting the text component and making it 0
+        LVLtext.GetComponent<Text>().text = "0";
+        LVLscore = 0;
         //sound
         ominous = GetComponent<AudioSource>();
         //using manager tag to find env manager
@@ -31,8 +51,8 @@ public class HailBoss : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if score is 50,51 or 52 (player can pass up to 3 objects at a time which can make score skip 10 and jump to 12)
-        if (envMan.GetComponent<GameManager>().score == 50 || envMan.GetComponent<GameManager>().score == 51 || envMan.GetComponent<GameManager>().score == 52)
+        //if isenabled is true
+        if (isEnabled)
         {
             //if not yet triggered
             if (!triggered)
@@ -59,8 +79,11 @@ public class HailBoss : MonoBehaviour
         {
             //wait
             yield return new WaitForSeconds(30f);
+            onDisable.Invoke();
             //set triggered to false
             triggered = false;
+            //set isenabled to false
+            isEnabled = false;
             //stop sound
             ominous.Stop();
             bgMusic.volume = 0.1f;
@@ -74,6 +97,30 @@ public class HailBoss : MonoBehaviour
             skyLight.intensity = 1.3f;
             //add 50 to the score since boss is beaten
             envMan.GetComponent<GameManager>().score += 50;
+            LVLScoreText();
+            //load secondlevel
+            SceneManager.LoadScene(sceneName: "ForestLevel");
         }
+    }
+    //the method that will be added to the list of the fieldbossevent
+    public void trigger(bool val)
+    {
+        isEnabled = val;
+    }
+
+    public void addScore()
+    {
+        PersistentServices.increaseBossScore();
+    }
+
+    public void LVLScoreText()
+    {
+        string path = Application.persistentDataPath + "\\BossScore.txt";
+        StreamReader sr = new StreamReader(path);
+        string line = sr.ReadLine();
+        LVLscore = int.Parse(line);
+
+        LVLtext.GetComponent<Text>().text = LVLscore.ToString("F0");
+        sr.Close();
     }
 }
