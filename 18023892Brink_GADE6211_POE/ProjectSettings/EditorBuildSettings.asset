@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ForestLevel.unity
     guid: 1f6a59824ef59a64f8b148b63bee1ed1
+  - enabled: 1
+    path: Assets/Scenes/SnowLevel.unity
+    guid: 48a4cfd63365c494ba8558c892e11d93
   m_configObjects: {}
