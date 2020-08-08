@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     //fieldboss unity event
     public UnityEvent fieldBossEvent;
 
-    public bool isEnabled = false;
+    public UnityEvent icebossevent;
 
     //array to hold all audio sources
     private AudioSource[] allAudioSources;
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         restart.onClick.AddListener(Restart);
         exit.onClick.AddListener(Exit);
         muteAll.onClick.AddListener(StopAudio);
-        //pause
+        //pause buttons
         pauseResume.onClick.AddListener(PauseResume);
         pauseRestart.onClick.AddListener(PauseRestart);
         pauseExit.onClick.AddListener(PauseExit);
@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
     void PauseExit()
     {
         PauseCanvas.SetActive(false);
+        //reset the boss score back to 0
         StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
         outputStream.WriteLine("0");
         outputStream.Close();
@@ -128,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         //timescale back to 1
         Time.timeScale = 1;
+        //reset the boss score back to 0
         StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
         outputStream.WriteLine("0");
         outputStream.Close();
@@ -140,6 +142,7 @@ public class GameManager : MonoBehaviour
         PauseCanvas.SetActive(false);
         //timescale back to 1
         Time.timeScale = 1;
+        //reset the boss score back to 0
         StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
         outputStream.WriteLine("0");
         outputStream.Close();
@@ -155,6 +158,7 @@ public class GameManager : MonoBehaviour
             {
                 //timescale back to 1
                 Time.timeScale = 1;
+            //reset the boss score back to 0
             StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
             outputStream.WriteLine("0");
             outputStream.Close();
@@ -176,6 +180,13 @@ public class GameManager : MonoBehaviour
         {
             //invoke the boss event
             fieldBossEvent.Invoke();
+        }
+
+        //if the score is 60, 61 or 62
+        if (score == 20 || score == 21 || score ==22)
+        {
+            //invoke the boss event
+            icebossevent.Invoke();
         }
     }
     //method to stop all audio (death)
@@ -258,7 +269,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         //stop audio
         StopAudio();
-        //
+        //reset the boss score back to 0
         StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
         outputStream.WriteLine("0");
         outputStream.Close();

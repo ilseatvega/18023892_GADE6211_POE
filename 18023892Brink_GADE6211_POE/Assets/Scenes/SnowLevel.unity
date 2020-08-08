@@ -737,9 +737,10 @@ GameObject:
   - component: {fileID: 278522158}
   - component: {fileID: 278522157}
   - component: {fileID: 278522156}
-  - component: {fileID: 278522155}
   - component: {fileID: 278522154}
   - component: {fileID: 278522153}
+  - component: {fileID: 278522160}
+  - component: {fileID: 278522155}
   m_Layer: 0
   m_Name: EnvManager
   m_TagString: Manager
@@ -948,7 +949,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 278522152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d06763bb5d4704e865524b5d950dca, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c045f1861220014fa61a909fa2618d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &278522156
@@ -999,7 +1000,32 @@ MonoBehaviour:
   fieldBossEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 278522156}
+      - m_Target: {fileID: 278522160}
+        m_MethodName: trigger
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 278522158}
+        m_MethodName: trigger
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  icebossevent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 278522160}
         m_MethodName: trigger
         m_Mode: 6
         m_Arguments:
@@ -1011,17 +1037,16 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 278522158}
-        m_MethodName: trigger
-        m_Mode: 6
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  isEnabled: 0
   play: {fileID: 1588782845}
   restartInGame: {fileID: 735718876}
   pause: {fileID: 1761935350}
@@ -1073,6 +1098,39 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: 16.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &278522160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278522152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1eeb32a426355047bd20e4ebae09a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LVLtext: {fileID: 589897074}
+  LVLscore: 0
+  onDisable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 278522160}
+        m_MethodName: addScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isEnabled: 0
+  bgMusic: {fileID: 278522154}
+  skyLight: {fileID: 85323405}
+  normalSky: {fileID: 2100000, guid: 8b7dd0809c7c6498789fa32a61eaa6cb, type: 2}
+  overcastSky: {fileID: 2100000, guid: f2b5f3f20933f434e850db1b710542fd, type: 2}
 --- !u!1 &460857019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,6 +3149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CatPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 418052148394777809, guid: 22cce0bb15bfaf444b5f8862188489b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3717266217895866050, guid: 22cce0bb15bfaf444b5f8862188489b7,
         type: 3}

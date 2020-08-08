@@ -15,8 +15,10 @@ public class HailBoss : MonoBehaviour
 {
     //scoretext gameobj - the text parented to the canvas that displays the score
     public GameObject LVLtext;
+    //boss lvl score
     public int LVLscore;
 
+    //unity event
     public UnityEvent onDisable;
 
     //bool to track the boss enabled event
@@ -34,7 +36,7 @@ public class HailBoss : MonoBehaviour
     public Material overcastSky;
     //environment manager
     private GameObject envMan;
-    //
+    //bool to see if boss is triggered
     private bool triggered = false;
 
     // Start is called before the first frame update
@@ -100,6 +102,7 @@ public class HailBoss : MonoBehaviour
             LVLScoreText();
             //load secondlevel
             SceneManager.LoadScene(sceneName: "ForestLevel");
+            LVLScoreText();
         }
     }
     //the method that will be added to the list of the fieldbossevent
@@ -107,7 +110,7 @@ public class HailBoss : MonoBehaviour
     {
         isEnabled = val;
     }
-
+    //the method that will be added to the list of the fieldbossevent
     public void addScore()
     {
         PersistentServices.increaseBossScore();
@@ -115,12 +118,15 @@ public class HailBoss : MonoBehaviour
 
     public void LVLScoreText()
     {
+        //path
         string path = Application.persistentDataPath + "\\BossScore.txt";
+        //creating new streamreader that will read the line in the text file
         StreamReader sr = new StreamReader(path);
         string line = sr.ReadLine();
         LVLscore = int.Parse(line);
-
+        //having lvl score text reflect the lvl score
         LVLtext.GetComponent<Text>().text = LVLscore.ToString("F0");
+        DontDestroyOnLoad(LVLtext);
         sr.Close();
     }
 }
