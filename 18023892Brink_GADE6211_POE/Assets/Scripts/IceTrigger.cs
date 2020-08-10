@@ -26,7 +26,7 @@ public class IceTrigger : MonoBehaviour
     //sound
     public AudioSource bgMusic;
     //sound
-    private AudioSource ice;
+    public AudioSource ice;
     //light of the sky - will darken once boss is spawned
     public Light skyLight;
     //normal sky material when boss in inactive
@@ -41,8 +41,6 @@ public class IceTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //sound
-        ice = GetComponent<AudioSource>();
         //using manager tag to find env manager
         envMan = GameObject.FindGameObjectWithTag("Manager");
     }

@@ -30,6 +30,8 @@ public class StartScreen : MonoBehaviour
 
         void Leaderboard()
         {
+            //load leaderboard
+            SceneManager.LoadScene(sceneName: "Leaderboard");
         }
 
         void Exit()

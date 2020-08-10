@@ -26,7 +26,7 @@ public class TreeTrigger : MonoBehaviour
     //sound
     public AudioSource bgMusic;
     //sound
-    private AudioSource treeFall;
+    private AudioSource forestSounds;
     //light of the sky - will darken once boss is spawned
     public Light skyLight;
     //normal sky material when boss in inactive
@@ -42,7 +42,7 @@ public class TreeTrigger : MonoBehaviour
     void Start()
     {
         //sound
-        treeFall = GetComponent<AudioSource>();
+        forestSounds = GetComponent<AudioSource>();
         //using manager tag to find env manager
         envMan = GameObject.FindGameObjectWithTag("Manager");
     }
@@ -58,7 +58,7 @@ public class TreeTrigger : MonoBehaviour
                 //set triggered to true
                 triggered = true;
                 //play sound
-                treeFall.Play();
+                forestSounds.Play();
                 bgMusic.volume = 0.05f;
                 //start the coroutine that will stop boss after certain amount of seconds
                 StartCoroutine(stopBoss());
@@ -84,7 +84,7 @@ public class TreeTrigger : MonoBehaviour
             //set isenabled to false
             isEnabled = false;
             //stop sound
-            treeFall.Stop();
+            forestSounds.Stop();
             bgMusic.volume = 0.1f;
             //refer to the bossstatus script
             TreeBossStatus reference = GameObject.FindGameObjectWithTag("Manager").GetComponent<TreeBossStatus>();

@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     //boss lvl score
     public int LVLscore;
 
+    public Text playerName;
     private GameObject player;
     //for the multiplier visual indicator that pops up when the collar is picked up
     public GameObject multiplierUI;
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
         play.onClick.AddListener(Play);
         pause.onClick.AddListener(Pause);
         restartInGame.onClick.AddListener(Restart);
-        restart.onClick.AddListener(Restart);
+        restart.onClick.AddListener(RestartDead);
         exit.onClick.AddListener(Exit);
         muteAll.onClick.AddListener(StopAudio);
         //pause buttons
@@ -125,6 +126,10 @@ public class GameManager : MonoBehaviour
     //exit method for button
     void Exit()
     {
+        //reset the boss score back to 0
+        StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+        outputStream.WriteLine("0");
+        outputStream.Close();
         //quit to main menu
         SceneManager.LoadScene(sceneName: "Start");
     }
@@ -151,6 +156,17 @@ public class GameManager : MonoBehaviour
         //reload the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    void RestartDead()
+    {
+        //timescale back to 1
+        Time.timeScale = 1;
+        //reset the boss score back to 0
+        StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+        outputStream.WriteLine("0");
+        outputStream.Close();
+        //start back at the first level
+        SceneManager.LoadScene(sceneName: "FieldLevel");
+    }
     //pause restart button method
     void PauseRestart()
     {
@@ -168,18 +184,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            //if r key is pressed (restart)
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                //timescale back to 1
-                Time.timeScale = 1;
-            //reset the boss score back to 0
-            StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
-            outputStream.WriteLine("0");
-            outputStream.Close();
-            //reload the scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
             //if press escape
             if (Input.GetKeyDown("escape"))
             {
@@ -195,7 +199,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         //if the score is 40, 41 or 42
-        if (score == 40 ||score == 41 ||score == 42)
+        if (score == 5 ||score == 6 ||score == 7)
         {
             //invoke the boss event
             fieldBossEvent.Invoke();
@@ -209,7 +213,7 @@ public class GameManager : MonoBehaviour
         }
         
         //if the score is 60, 61 or 62
-        if (score == 5 || score == 6 || score == 7)
+        if (score == 20 || score == 21 || score == 22)
         {
             //invoke the boss event
             icebossevent.Invoke();
@@ -299,13 +303,6 @@ public class GameManager : MonoBehaviour
         StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
         outputStream.WriteLine("0");
         outputStream.Close();
-
-        //when r is pressed
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            //reload the scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
     }
 
     private void updateLVLScore()
@@ -320,5 +317,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         updateLVLScore();
+    }
+
+    public void UploadScore()
+    {
+        Leaderboard.AddNewHS(playerName.text, score);
     }
 }
