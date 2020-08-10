@@ -28,7 +28,7 @@ public class TreeSpawn : MonoBehaviour
             foreach (Transform loc in locs)
             {
                 //randomise to determine what % chance it has of spawning
-                if (Random.Range(0, 101) <= 50)
+                if (Random.Range(0, 101) <= 60)
                 {
                     //start the delay spawn coroutine
                     StartCoroutine(delaySpawn(loc.position));

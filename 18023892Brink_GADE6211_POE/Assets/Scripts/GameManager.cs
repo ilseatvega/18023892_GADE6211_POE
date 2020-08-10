@@ -199,21 +199,21 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         //if the score is 40, 41 or 42
-        if (score == 5 ||score == 6 ||score == 7)
+        if (score == 40 ||score == 41 ||score == 42)
         {
             //invoke the boss event
             fieldBossEvent.Invoke();
         }
 
         //if the score is 50, 51 or 52
-        if (score == 10 || score == 11 || score == 12)
+        if (score == 50 || score == 51 || score == 52)
         {
             //invoke the boss event
             forestBossEvent.Invoke();
         }
         
         //if the score is 60, 61 or 62
-        if (score == 20 || score == 21 || score == 22)
+        if (score == 60 || score == 62 || score == 62)
         {
             //invoke the boss event
             icebossevent.Invoke();

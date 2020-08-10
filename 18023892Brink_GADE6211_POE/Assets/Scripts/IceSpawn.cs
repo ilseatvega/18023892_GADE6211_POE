@@ -26,7 +26,7 @@ public class IceSpawn : MonoBehaviour
             foreach (Transform loc in locs)
             {
                 //randomise to determine what % chance it has of spawning
-                if (Random.Range(0, 101) <= 20)
+                if (Random.Range(0, 101) <= 25)
                 {
                     //start the delay spawn coroutine
                     StartCoroutine(delaySpawn(loc.position));
