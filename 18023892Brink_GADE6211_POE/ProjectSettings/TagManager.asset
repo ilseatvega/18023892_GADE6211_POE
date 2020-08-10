@@ -12,6 +12,8 @@ TagManager:
   - Berry
   - BerryActive
   - BossHail
+  - BossIce
+  - BossTree
   layers:
   - Default
   - TransparentFX

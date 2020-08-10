@@ -39,8 +39,6 @@ public class IceSpawn : MonoBehaviour
     {
         //instatiate the prefab
         GameObject instance = Object.Instantiate(prefab, loc, prefab.transform.rotation);
-        //gradually move icicles up)
-        instance.transform.Translate(Vector3.up * Time.deltaTime, Camera.main.transform);
     }
     //dealy spawn coroutine so that the hail doesnt spawn too slowly
     //now it spawns close to player

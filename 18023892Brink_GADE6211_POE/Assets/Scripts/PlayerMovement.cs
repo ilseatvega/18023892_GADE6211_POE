@@ -85,9 +85,8 @@ public class PlayerMovement : MonoBehaviour
                 //set isgrounded to false as they are not grounded
                 isGrounded = false;
             }
-            //since my collision is not working as well as it should, using raycast
             //when the player is close enough to the ground it sets the jump animation to false
-            if (Physics.Raycast(transform.position, Vector3.down, 0.3f))
+            if (isGrounded)
             {
                 catAnim.SetBool("Jump", false);
             }

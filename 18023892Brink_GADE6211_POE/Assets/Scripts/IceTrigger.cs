@@ -41,9 +41,6 @@ public class IceTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //getting the text component and making it 0
-        LVLtext.GetComponent<Text>().text = "0";
-        LVLscore = 0;
         //sound
         ice = GetComponent<AudioSource>();
         //using manager tag to find env manager
@@ -80,6 +77,7 @@ public class IceTrigger : MonoBehaviour
         {
             //wait
             yield return new WaitForSeconds(30f);
+            LVLScoreText();
             onDisable.Invoke();
             //set triggered to false
             triggered = false;
@@ -98,10 +96,8 @@ public class IceTrigger : MonoBehaviour
             skyLight.intensity = 1.3f;
             //add 50 to the score since boss is beaten
             envMan.GetComponent<GameManager>().score += 50;
-            LVLScoreText();
             //load field level (so now it will loop)
             SceneManager.LoadScene(sceneName: "FieldLevel");
-            LVLScoreText();
         }
     }
     //the method that will be added to the list of the fieldbossevent
@@ -117,15 +113,7 @@ public class IceTrigger : MonoBehaviour
 
     public void LVLScoreText()
     {
-        //path
-        string path = Application.persistentDataPath + "\\BossScore.txt";
-        //creating new streamreader that will read the line in the text file
-        StreamReader sr = new StreamReader(path);
-        string line = sr.ReadLine();
-        LVLscore = int.Parse(line);
         //having lvl score text reflect the lvl score
-        LVLtext.GetComponent<Text>().text = LVLscore.ToString("F0");
-        DontDestroyOnLoad(LVLtext);
-        sr.Close();
+        LVLtext.GetComponent<Text>().text = PersistentServices.getScore();
     }
 }

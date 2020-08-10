@@ -27,7 +27,7 @@ public class PlayerDeath : MonoBehaviour
     void OnCollisionEnter(Collision obs)
     {
         //objects w game tag obstacle
-        if (obs.gameObject.tag == "Obstacle" || obs.gameObject.tag == "BossHail")
+        if (obs.gameObject.tag == "Obstacle" || obs.gameObject.tag == "BossHail" || obs.gameObject.tag == "BossTree" || obs.gameObject.tag == "BossIce")
         {
             //player is dead
             isAlive = false;

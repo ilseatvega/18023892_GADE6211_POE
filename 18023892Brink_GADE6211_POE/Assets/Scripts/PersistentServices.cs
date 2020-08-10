@@ -43,4 +43,15 @@ public static class PersistentServices
         outputStream.WriteLine(nextVal);
         outputStream.Close();
     }
+
+    public static string getScore()
+    {
+        //path
+        string path = Application.persistentDataPath + "\\BossScore.txt";
+        //creating new streamreader that will read the line in the text file
+        StreamReader sr = new StreamReader(path);
+        string line = sr.ReadLine();
+        sr.Close();
+        return line;
+    }
 }

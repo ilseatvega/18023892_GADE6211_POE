@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 {
     //fieldboss unity event
     public UnityEvent fieldBossEvent;
-
+    public UnityEvent forestBossEvent;
     public UnityEvent icebossevent;
 
     //array to hold all audio sources
@@ -30,7 +30,11 @@ public class GameManager : MonoBehaviour
     public Button pauseRestart;
     public Button pauseExit;
 
-    
+    //scoretext gameobj - the text parented to the canvas that displays the score
+    public GameObject LVLtext;
+    //boss lvl score
+    public int LVLscore;
+
     private GameObject player;
     //for the multiplier visual indicator that pops up when the collar is picked up
     public GameObject multiplierUI;
@@ -61,6 +65,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //getting the text component and making it 0
+        //LVLtext.GetComponent<Text>().text = "0";
+        //LVLscore = 0;
+
         //player is equal to the player object(using tag to find it)
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -85,6 +93,13 @@ public class GameManager : MonoBehaviour
         coinScore.GetComponent<Text>().text = " 0";
         //coins is 0
         coins = 0;
+
+        InvokeRepeating("callEnum", 3f, 3f);
+    }
+
+    void callEnum()
+    {
+        StartCoroutine(updateDisplay());
     }
 
     //play method for button
@@ -168,6 +183,10 @@ public class GameManager : MonoBehaviour
             //if press escape
             if (Input.GetKeyDown("escape"))
             {
+            //reset the boss score back to 0
+            StreamWriter outputStream = new StreamWriter(Application.persistentDataPath + "\\BossScore.txt");
+            outputStream.WriteLine("0");
+            outputStream.Close();
             //quit to menu
             SceneManager.LoadScene(sceneName: "Start");
             }
@@ -175,15 +194,22 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if the score is 50, 51 or 52
-        if (score == 50 ||score == 51 ||score == 52)
+        //if the score is 40, 41 or 42
+        if (score == 40 ||score == 41 ||score == 42)
         {
             //invoke the boss event
             fieldBossEvent.Invoke();
         }
 
+        //if the score is 50, 51 or 52
+        if (score == 10 || score == 11 || score == 12)
+        {
+            //invoke the boss event
+            forestBossEvent.Invoke();
+        }
+        
         //if the score is 60, 61 or 62
-        if (score == 20 || score == 21 || score ==22)
+        if (score == 5 || score == 6 || score == 7)
         {
             //invoke the boss event
             icebossevent.Invoke();
@@ -280,5 +306,19 @@ public class GameManager : MonoBehaviour
             //reload the scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void updateLVLScore()
+    {
+        LVLscore = int.Parse(PersistentServices.getScore());
+        Debug.Log(LVLscore);
+        //having lvl score text reflect the lvl score
+        LVLtext.GetComponent<Text>().text = LVLscore.ToString();
+    }
+
+    IEnumerator updateDisplay()
+    {
+        yield return new WaitForSeconds(.5f);
+        updateLVLScore();
     }
 }

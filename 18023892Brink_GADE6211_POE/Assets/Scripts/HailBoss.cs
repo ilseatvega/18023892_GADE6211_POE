@@ -42,9 +42,6 @@ public class HailBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //getting the text component and making it 0
-        LVLtext.GetComponent<Text>().text = "0";
-        LVLscore = 0;
         //sound
         ominous = GetComponent<AudioSource>();
         //using manager tag to find env manager
@@ -81,6 +78,7 @@ public class HailBoss : MonoBehaviour
         {
             //wait
             yield return new WaitForSeconds(30f);
+            LVLScoreText();
             onDisable.Invoke();
             //set triggered to false
             triggered = false;
@@ -118,15 +116,7 @@ public class HailBoss : MonoBehaviour
 
     public void LVLScoreText()
     {
-        //path
-        string path = Application.persistentDataPath + "\\BossScore.txt";
-        //creating new streamreader that will read the line in the text file
-        StreamReader sr = new StreamReader(path);
-        string line = sr.ReadLine();
-        LVLscore = int.Parse(line);
         //having lvl score text reflect the lvl score
-        LVLtext.GetComponent<Text>().text = LVLscore.ToString("F0");
-        DontDestroyOnLoad(LVLtext);
-        sr.Close();
+        LVLtext.GetComponent<Text>().text = PersistentServices.getScore();
     }
 }

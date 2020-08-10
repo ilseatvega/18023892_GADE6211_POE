@@ -8784,7 +8784,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  isEnabled: 0
+  icebossevent:
+    m_PersistentCalls:
+      m_Calls: []
   play: {fileID: 659849944}
   restartInGame: {fileID: 2094522430}
   pause: {fileID: 1904557858}
@@ -8794,6 +8796,8 @@ MonoBehaviour:
   pauseResume: {fileID: 1671381011}
   pauseRestart: {fileID: 88541151}
   pauseExit: {fileID: 1277365481}
+  LVLtext: {fileID: 720172635}
+  LVLscore: 0
   multiplierUI: {fileID: 1034731378}
   multiplier2: {fileID: 808902420}
   berryUI: {fileID: 2023922788}
